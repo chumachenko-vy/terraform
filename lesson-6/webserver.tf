@@ -1,15 +1,21 @@
 resource "aws_instance" "webserver" {
-  ami           = "ami-0c6da69dd16f45f72" # amazon linux
-  instance_type = "t3.micro"
-  tags = {
-    Name = "webserver build by terraform"
-  }
+  ami                    = "ami-0c6da69dd16f45f72" # amazon linux
+  instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.webserver.id]
   user_data = templatefile("user_data.sh.tpl", {
     f_name = "Vald",
     l_name = "Ch",
     names  = ["Vasya", "petya", "Donald", "Test", "123456789"]
   })
+
+  tags = {
+    Name  = "webserver build by terraform!"
+    Owner = "VCH"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 
 }
 
