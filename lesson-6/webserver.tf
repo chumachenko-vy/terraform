@@ -1,3 +1,8 @@
+resource "aws_eip" "my_static_ip" {
+  instance = aws_instance.webserver.id
+}
+
+
 resource "aws_instance" "webserver" {
   ami                    = "ami-0c6da69dd16f45f72" # amazon linux
   instance_type          = "t3.micro"
@@ -5,7 +10,7 @@ resource "aws_instance" "webserver" {
   user_data = templatefile("user_data.sh.tpl", {
     f_name = "Vald",
     l_name = "Ch",
-    names  = ["Vasya", "petya", "Donald", "Test", "XYZ!"]
+    names  = ["Vasya", "petya", "Donald", "Test"]
   })
 
   tags = {
@@ -13,8 +18,9 @@ resource "aws_instance" "webserver" {
     Owner = "VCH"
   }
   lifecycle {
-    ignore_changes = ["ami", "user_data"]
+    create_before_destroy = true
   }
+
 
 }
 
