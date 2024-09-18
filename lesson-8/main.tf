@@ -30,7 +30,7 @@ resource "aws_instance" "database" {
   vpc_security_group_ids = [aws_security_group.Dynamic_SG.id]
 
   tags = {
-    Name  = "w"
+    Name  = "database"
     Owner = "VCH"
   }
 
