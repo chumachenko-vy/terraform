@@ -12,7 +12,7 @@ sudo cat <<EOF > /var/www/html/index.html
 <font color="green">Server PrivateIP: <font color="aqua">$myip<br><br>
 
 <font color="magenta">
-<b>Version v666</b>
+<b>Version v666777</b>
 </body>
 </html>
 EOF
