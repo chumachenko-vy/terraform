@@ -17,5 +17,5 @@ sudo cat <<EOF > /var/www/html/index.html
 </html>
 EOF
 
-sudo service httpd start
-sudo chkconfig httpd on
+sudo systemctl start httpd.service
+sudo systemctl enable httpd.service
